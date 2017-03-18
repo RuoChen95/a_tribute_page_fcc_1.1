@@ -32,20 +32,7 @@
           <p id = "smallDescription"></p></div>
           
           <h3 class="strong">Here are some information about Aristotle :</h3>
-          <div id = "details">
-            <!--
-            <ul>
-              <li>Born in 384 BC in Stagira, Chalcidice</li>
-              <li>At about the age of eighteen, Aristotle moved to Athens to continue his education at Plato's Academy.</li>
-              <li>Accompanied Xenocrates to the court of his friend Hermias of Atarneus in Asia Minor.</li>
-              <li>Was invited by Philip II of Macedon to become the tutor to his son Alexander in 343 BC.</li>
-              <li>By 335 BC, Artistotle had returned to Athens, establishing his own school there known as the Lyceum. Aristotle conducted courses at the school for the next twelve years.</li>
-              <li>This period in Athens, between 335 and 323 BC, is when Aristotle is believed to have composed many of his works. He wrote many dialogues of which only fragments have survived.</li>
-              <li>Aristotle not only studied almost every subject possible at the time, but made significant contributions to most of them.</li>
-              <li>Near the end of his life, Alexander and Aristotle became estranged over Alexander's relationship with Persia and Persians. A widespread tradition in antiquity suspected Aristotle of playing a role in Alexander's death, but there is little evidence.</li>
-              <li>Following Alexander's death, anti-Macedonian sentiment in Athens was rekindled.</li>
-            </ul>
-            -->
+          <div id = "ulDetails">
           </div>
           <br>
           <div class="well well-sm">
@@ -60,5 +47,44 @@
   </div>
   <script src="react/build/react.js"></script>
   <script src="react/build/react-dom.js"></script>
-  <script src="js/builder.js"></script>
+  <script src="babel/browser.js"></script>
+  <script>
+  
+  //自定义组件
+    var Description = React.createClass({
+      render:function(){
+        return React.DOM.span(null, "Plato (left) and Aristotle (right), a detail of The School of Athens, a fresco by Raphael. Aristotle gestures to the earth, representing his belief in knowledge through empirical observation and experience, while holding a copy of his Nicomachean Ethics in his hand. Plato gestures to the heavens, representing his belief in The Forms, while holding a copy of Timaeus.");
+      }
+    })
+    ReactDOM.render(
+      React.createElement(Description),
+      document.getElementById("smallDescription")
+    );
+
+  //默认组件
+    ReactDOM.render(
+      React.DOM.h1(null,"Aristotle"),
+      document.getElementById("title")
+    );
+
+    var detail = [
+      "Born in 384 BC in Stagira, Chalcidice",
+      "At about the age of eighteen, Aristotle moved to Athens to continue his education at Plato's Academy.",
+      "Accompanied Xenocrates to the court of his friend Hermias of Atarneus in Asia Minor.",
+      "Was invited by Philip II of Macedon to become the tutor to his son Alexander in 343 BC.",
+      "By 335 BC, Artistotle had returned to Athens, establishing his own school there known as the Lyceum. Aristotle conducted courses at the school for the next twelve years.",
+      "This period in Athens, between 335 and 323 BC, is when Aristotle is believed to have composed many of his works. He wrote many dialogues of which only fragments have survived."
+    ];
+  </script>
+  <script type="text/babel">
+    ReactDOM.render(
+      <ul>
+        {detail.map(function(cell){
+          return <li>{cell}</li>;
+
+        })}
+      </ul>,
+      document.getElementById('ulDetails')
+    );
+  </script>
 </body>

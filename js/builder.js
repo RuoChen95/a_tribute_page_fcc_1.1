@@ -2,12 +2,11 @@
 var Excel = React.createClass({
   render: function(){
     return(
-        React.DOM.ul(
-          null,
-          this.props.headers.map(function(detail){
-            return React.DOM.li(null,detail);
-          })
-        )
+      React.DOM.ul(null,
+        this.props.headers.map(function(detail){
+           return React.DOM.li(null, detail);
+        })
+      )
     );// end of return
   }
 });
@@ -34,6 +33,8 @@ ReactDOM.render(
   React.DOM.h1(null,"Aristotle"),
   document.getElementById("title")
 );
+
+
 
 var detail = [
   "Born in 384 BC in Stagira, Chalcidice",
